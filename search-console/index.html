@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Console Dashboard</title>
+  <link rel="stylesheet" href="css/search-style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <h1>Google Search Console Dashboard</h1>
+
+  <section class="overview-cards">
+    <div class="card">Clicks<br><strong>5,400</strong></div>
+    <div class="card">Impressions<br><strong>89,000</strong></div>
+    <div class="card">CTR<br><strong>6.1%</strong></div>
+    <div class="card">Avg Position<br><strong>14.2</strong></div>
+  </section>
+
+  <section class="chart-section">
+    <h2>Performance (Last 7 Days)</h2>
+    <canvas id="performanceChart"></canvas>
+  </section>
+
+  <section class="url-inspection">
+    <h2>URL Inspection</h2>
+    <input type="text" id="urlInput" placeholder="Enter URL..." />
+    <button onclick="checkUrl()">Check Status</button>
+    <div id="urlResult"></div>
+  </section>
+
+  <section class="coverage">
+    <h2>Coverage Report</h2>
+    <canvas id="coverageChart"></canvas>
+    <ul>
+      <li>Valid Pages: 520</li>
+      <li>Errors: 5 (Redirect errors)</li>
+      <li>Excluded: 45 (Blocked by robots.txt)</li>
+    </ul>
+  </section>
+
+  <section class="enhancements">
+    <h2>Enhancements</h2>
+    <ul>
+      <li>Mobile Usability: 2 errors</li>
+      <li>Core Web Vitals: Needs improvement</li>
+    </ul>
+  </section>
+
+  <section class="sitemaps">
+    <h2>Sitemaps</h2>
+    <table>
+      <thead>
+        <tr><th>Sitemap</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>https://yoursite.com/sitemap.xml</td><td>Success</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="links-report">
+    <h2>Links Report</h2>
+    <h3>Top Linking Sites</h3>
+    <table>
+      <thead>
+        <tr><th>Site</th><th>Links</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>example.com</td><td>56</td></tr>
+        <tr><td>anotherdomain.com</td><td>34</td></tr>
+      </tbody>
+    </table>
+    <h3>Top Linked Pages</h3>
+    <table>
+      <thead>
+        <tr><th>Page</th><th>Links</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>/about-us</td><td>20</td></tr>
+        <tr><td>/contact</td><td>15</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="manual-actions">
+    <h2>Manual Actions & Security</h2>
+    <p>No issues detected. Site is clean!</p>
+  </section>
+
+<script src="js/search-script.js"></script>
+</body>
+</html>
 
