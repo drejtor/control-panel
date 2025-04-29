@@ -1,10 +1,12 @@
-// config.js
 const GSC_CONFIG = {
-  apiKey: "YOUR_API_KEY_HERE",           // (optional for some GSC APIs)
-  clientId: "YOUR_CLIENT_ID_HERE",        // OAuth 2.0 Client ID
-  clientSecret: "YOUR_CLIENT_SECRET_HERE",// OAuth 2.0 Client Secret
-  accessToken: "YOUR_ACCESS_TOKEN_HERE",  // OAuth 2.0 Access Token (temporary)
-  refreshToken: "YOUR_REFRESH_TOKEN_HERE",// OAuth 2.0 Refresh Token (for renewing)
-  propertyUri: "https://yourdomain.com/"  // Your site URI in Search Console
+  apiKey: "YOUR_API_KEY_HERE",
+  clientId: "YOUR_CLIENT_ID_HERE",
+  clientSecret: "YOUR_CLIENT_SECRET_HERE",
+  accessToken: "YOUR_ACCESS_TOKEN_HERE",
+  refreshToken: "YOUR_REFRESH_TOKEN_HERE",
+  propertyUri: "https://yourdomain.com/",
+  demoMode: true // Change to false when real API is connected
+};
+
 };
 
