@@ -5,8 +5,5 @@ const GSC_CONFIG = {
   accessToken: "YOUR_ACCESS_TOKEN_HERE",
   refreshToken: "YOUR_REFRESH_TOKEN_HERE",
   propertyUri: "https://yourdomain.com/",
-  demoMode: true // Change to false when real API is connected
+  demoMode: true // true for showing dummy data now, false when API keys are added
 };
-
-};
-
