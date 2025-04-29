@@ -1,3 +1,43 @@
+// ==============================
+// DEBUGGING TOOL
+// ==============================
+
+// Check Demo Mode
+console.log("DEBUG: demoMode is", GSC_CONFIG.demoMode ? "ENABLED ✅" : "DISABLED ❌");
+
+// Check important IDs
+const idsToCheck = [
+  'clicksValue', 'impressionsValue', 'ctrValue', 'positionValue',
+  'coverageList', 'mobileUsabilityList', 'sitemapsTableBody',
+  'externalLinksTableBody', 'internalLinksTableBody',
+  'manualActions', 'securityIssues'
+];
+
+idsToCheck.forEach(id => {
+  if (document.getElementById(id)) {
+    console.log(`DEBUG: Found element #${id} ✅`);
+  } else {
+    console.error(`DEBUG: Missing element #${id} ❌`);
+  }
+});
+
+// Optional: Print when Refresh Data starts
+console.log("DEBUG: search-script.js loaded and ready.");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const accessToken = GSC_CONFIG.accessToken;
 const propertyUri = GSC_CONFIG.propertyUri;
 
