@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Search Console Dashboard</title>
+  <title>Google Search Console Dashboard</title>
   <link rel="stylesheet" href="css/search-style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -10,19 +10,31 @@
 
   <h1>Google Search Console Dashboard</h1>
 
+  <!-- Demo Badge -->
+  <div id="demoBadge" style="display:none; background: orange; padding: 5px 10px; color: white; width: fit-content; margin-bottom: 10px;">
+    DEMO MODE ACTIVE
+  </div>
+
+  <!-- Refresh Button and Last Updated -->
+  <button onclick="refreshDashboardData()" id="refreshButton">Refresh Data</button>
+  <div id="loadingSpinner" style="display:none;">Loading...</div>
+  <p id="lastUpdated">Last Updated: Loading...</p>
+
+  <!-- Overview Cards -->
   <section class="overview-cards">
-    <button onclick="refreshDashboardData()" id="refreshButton">Refresh Data</button>
-    <div class="card">Clicks<br><strong>5,400</strong></div>
-    <div class="card">Impressions<br><strong>89,000</strong></div>
-    <div class="card">CTR<br><strong>6.1%</strong></div>
-    <div class="card">Avg Position<br><strong>14.2</strong></div>
+    <div class="card">Clicks<br><strong id="clicksValue">Loading...</strong></div>
+    <div class="card">Impressions<br><strong id="impressionsValue">Loading...</strong></div>
+    <div class="card">CTR<br><strong id="ctrValue">Loading...</strong></div>
+    <div class="card">Avg Position<br><strong id="positionValue">Loading...</strong></div>
   </section>
 
+  <!-- Performance Chart -->
   <section class="chart-section">
-    <h2>Performance (Last 7 Days)</h2>
+    <h2>Performance Over Time</h2>
     <canvas id="performanceChart"></canvas>
   </section>
 
+  <!-- URL Inspection -->
   <section class="url-inspection">
     <h2>URL Inspection</h2>
     <input type="text" id="urlInput" placeholder="Enter URL..." />
@@ -30,66 +42,68 @@
     <div id="urlResult"></div>
   </section>
 
+  <!-- Coverage -->
   <section class="coverage">
     <h2>Coverage Report</h2>
     <canvas id="coverageChart"></canvas>
-    <ul>
-      <li>Valid Pages: 520</li>
-      <li>Errors: 5 (Redirect errors)</li>
-      <li>Excluded: 45 (Blocked by robots.txt)</li>
+    <ul id="coverageList">
+      <li>Loading coverage data...</li>
     </ul>
   </section>
 
+  <!-- Mobile Usability -->
   <section class="enhancements">
-    <h2>Enhancements</h2>
-    <ul>
-      <li>Mobile Usability: 2 errors</li>
-      <li>Core Web Vitals: Needs improvement</li>
+    <h2>Mobile Usability</h2>
+    <ul id="mobileUsabilityList">
+      <li>Loading mobile usability data...</li>
     </ul>
   </section>
 
+  <!-- Sitemaps -->
   <section class="sitemaps">
     <h2>Sitemaps</h2>
-    <table>
+    <table id="sitemapsTable">
       <thead>
         <tr><th>Sitemap</th><th>Status</th></tr>
       </thead>
       <tbody>
-        <tr><td>https://yoursite.com/sitemap.xml</td><td>Success</td></tr>
+        <tr><td colspan="2">Loading sitemap data...</td></tr>
       </tbody>
     </table>
   </section>
 
+  <!-- Links Report -->
   <section class="links-report">
     <h2>Links Report</h2>
-    <h3>Top Linking Sites</h3>
-    <table>
+    <h3>Top External Links</h3>
+    <table id="externalLinksTable">
       <thead>
         <tr><th>Site</th><th>Links</th></tr>
       </thead>
       <tbody>
-        <tr><td>example.com</td><td>56</td></tr>
-        <tr><td>anotherdomain.com</td><td>34</td></tr>
+        <tr><td colspan="2">Loading external links...</td></tr>
       </tbody>
     </table>
-    <h3>Top Linked Pages</h3>
-    <table>
+
+    <h3>Top Internal Links</h3>
+    <table id="internalLinksTable">
       <thead>
         <tr><th>Page</th><th>Links</th></tr>
       </thead>
       <tbody>
-        <tr><td>/about-us</td><td>20</td></tr>
-        <tr><td>/contact</td><td>15</td></tr>
+        <tr><td colspan="2">Loading internal links...</td></tr>
       </tbody>
     </table>
   </section>
 
+  <!-- Manual Actions and Security -->
   <section class="manual-actions">
-    <h2>Manual Actions & Security</h2>
-    <p>No issues detected. Site is clean!</p>
+    <h2>Manual Actions & Security Issues</h2>
+    <p id="manualActions">Loading manual actions...</p>
+    <p id="securityIssues">Loading security issues...</p>
   </section>
 
-<script src="js/search-script.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/search-script.js"></script>
 </body>
 </html>
-
