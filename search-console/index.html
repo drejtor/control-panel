@@ -2,96 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Google Search Console Dashboard</title>
+  <title>Search Console Dashboard</title>
   <link rel="stylesheet" href="css/search-style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
   <h1>Google Search Console Dashboard</h1>
-
-  <div id="demoBadge" style="display:none; background: orange; padding: 5px 10px; color: white; width: fit-content; margin-bottom: 10px;">
+  <div id="demoBadge" style="display:none; background: orange; padding: 5px; color: white; width: fit-content; margin-bottom: 10px;">
     DEMO MODE ACTIVE
   </div>
-
-  <button onclick="refreshDashboardData()" id="refreshButton">Refresh Data</button>
-  <div id="loadingSpinner" style="display:none;">Loading...</div>
-  <p id="lastUpdated">Last Updated: Loading...</p>
+  <button onclick="refreshDashboardData()">Refresh Data</button>
+  <div id="loadingSpinner" style="display:none; font-weight:bold; color:#f60;">Loading...</div>
+  <p id="lastUpdated">Last Updated: --</p>
 
   <section class="overview-cards">
-    <div class="card">Clicks<br><strong id="clicksValue">Loading...</strong></div>
-    <div class="card">Impressions<br><strong id="impressionsValue">Loading...</strong></div>
-    <div class="card">CTR<br><strong id="ctrValue">Loading...</strong></div>
-    <div class="card">Avg Position<br><strong id="positionValue">Loading...</strong></div>
+    <div class="card">Clicks<br><strong id="clicksValue">0</strong></div>
+    <div class="card">Impressions<br><strong id="impressionsValue">0</strong></div>
+    <div class="card">CTR<br><strong id="ctrValue">0%</strong></div>
+    <div class="card">Position<br><strong id="positionValue">0</strong></div>
   </section>
 
-  <section class="chart-section">
-    <h2>Performance Over Time</h2>
-    <canvas id="performanceChart"></canvas>
-  </section>
-
-  <section class="url-inspection">
-    <h2>URL Inspection</h2>
-    <input type="text" id="urlInput" placeholder="Enter URL..." />
-    <button onclick="checkUrl()">Check Status</button>
-    <div id="urlResult"></div>
-  </section>
-
-  <section class="coverage">
-    <h2>Coverage Report</h2>
-    <canvas id="coverageChart"></canvas>
-    <ul id="coverageList">
-      <li>Loading coverage data...</li>
-    </ul>
-  </section>
-
-  <section class="enhancements">
-    <h2>Mobile Usability</h2>
-    <ul id="mobileUsabilityList">
-      <li>Loading mobile usability data...</li>
-    </ul>
-  </section>
-
-  <section class="sitemaps">
-    <h2>Sitemaps</h2>
-    <table id="sitemapsTable">
-      <thead>
-        <tr><th>Sitemap</th><th>Status</th></tr>
-      </thead>
-      <tbody id="sitemapsTableBody">
-        <tr><td colspan="2">Loading sitemap data...</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="links-report">
-    <h2>Links Report</h2>
-    <h3>Top External Links</h3>
-    <table id="externalLinksTable">
-      <thead>
-        <tr><th>Site</th><th>Links</th></tr>
-      </thead>
-      <tbody id="externalLinksTableBody">
-        <tr><td colspan="2">Loading external links...</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Top Internal Links</h3>
-    <table id="internalLinksTable">
-      <thead>
-        <tr><th>Page</th><th>Links</th></tr>
-      </thead>
-      <tbody id="internalLinksTableBody">
-        <tr><td colspan="2">Loading internal links...</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="manual-actions">
-    <h2>Manual Actions & Security Issues</h2>
-    <p id="manualActions">Loading manual actions...</p>
-    <p id="securityIssues">Loading security issues...</p>
-  </section>
+  <canvas id="performanceChart"></canvas>
 
   <script src="js/config.js"></script>
   <script src="js/search-script.js"></script>
