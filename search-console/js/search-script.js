@@ -9,13 +9,13 @@ function refreshDashboardData() {
     document.getElementById('lastUpdated').innerText = `Last Updated: ${new Date().toLocaleString()}`;
 
     if (GSC_CONFIG.demoMode) {
-      // DEMO: Show Dummy Overview Data
+      // DEMO: Fill Dummy Overview
       document.getElementById('clicksValue').innerText = '5,400';
       document.getElementById('impressionsValue').innerText = '89,000';
       document.getElementById('ctrValue').innerText = '6.1%';
       document.getElementById('positionValue').innerText = '14.2';
 
-      // DEMO: Fill Dummy Coverage Report
+      // DEMO: Fill Dummy Coverage
       document.getElementById('coverageList').innerHTML = `
         <li>520 Valid pages</li>
         <li>5 Errors (redirect error)</li>
@@ -28,35 +28,21 @@ function refreshDashboardData() {
         <li>Clickable elements too close together</li>
       `;
 
-      // DEMO: Fill Dummy Sitemaps Table
-      document.getElementById('sitemapsTable').innerHTML = `
-        <thead>
-          <tr><th>Sitemap</th><th>Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>https://yourdomain.com/sitemap.xml</td><td>Success</td></tr>
-        </tbody>
+      // DEMO: Fill Dummy Sitemaps
+      document.getElementById('sitemapsTableBody').innerHTML = `
+        <tr><td>https://yourdomain.com/sitemap.xml</td><td>Success</td></tr>
       `;
 
-      // DEMO: Fill Dummy Links Report
-      document.getElementById('externalLinksTable').innerHTML = `
-        <thead>
-          <tr><th>Site</th><th>Links</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>example.com</td><td>56</td></tr>
-          <tr><td>anotherdomain.com</td><td>34</td></tr>
-        </tbody>
+      // DEMO: Fill Dummy External Links
+      document.getElementById('externalLinksTableBody').innerHTML = `
+        <tr><td>example.com</td><td>56</td></tr>
+        <tr><td>anotherdomain.com</td><td>34</td></tr>
       `;
 
-      document.getElementById('internalLinksTable').innerHTML = `
-        <thead>
-          <tr><th>Page</th><th>Links</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>/about-us</td><td>20</td></tr>
-          <tr><td>/contact</td><td>15</td></tr>
-        </tbody>
+      // DEMO: Fill Dummy Internal Links
+      document.getElementById('internalLinksTableBody').innerHTML = `
+        <tr><td>/about-us</td><td>20</td></tr>
+        <tr><td>/contact</td><td>15</td></tr>
       `;
 
       // DEMO: Fill Dummy Manual Actions and Security
@@ -74,7 +60,6 @@ function refreshDashboardData() {
     document.getElementById('loadingSpinner').style.display = 'none';
   }, 1000);
 }
-
 
 // Dummy Performance Chart
 const ctx = document.getElementById('performanceChart').getContext('2d');
@@ -110,7 +95,7 @@ function checkUrl() {
   }
 }
 
-// Future: Real Data Fetching Function
+// Future: Real Data Fetching
 async function fetchRealDataFromGSC() {
   try {
     const response = await fetch(`https://searchconsole.googleapis.com/v1/sites/${encodeURIComponent(propertyUri)}/searchAnalytics/query`, {
@@ -133,7 +118,7 @@ async function fetchRealDataFromGSC() {
   }
 }
 
-// Load dashboard data when page loads
+// Load dashboard when page loads
 window.onload = () => {
   refreshDashboardData();
 };
