@@ -10,17 +10,14 @@
 
   <h1>Google Search Console Dashboard</h1>
 
-  <!-- Demo Badge -->
   <div id="demoBadge" style="display:none; background: orange; padding: 5px 10px; color: white; width: fit-content; margin-bottom: 10px;">
     DEMO MODE ACTIVE
   </div>
 
-  <!-- Refresh Button and Last Updated -->
   <button onclick="refreshDashboardData()" id="refreshButton">Refresh Data</button>
   <div id="loadingSpinner" style="display:none;">Loading...</div>
   <p id="lastUpdated">Last Updated: Loading...</p>
 
-  <!-- Overview Cards -->
   <section class="overview-cards">
     <div class="card">Clicks<br><strong id="clicksValue">Loading...</strong></div>
     <div class="card">Impressions<br><strong id="impressionsValue">Loading...</strong></div>
@@ -28,13 +25,11 @@
     <div class="card">Avg Position<br><strong id="positionValue">Loading...</strong></div>
   </section>
 
-  <!-- Performance Chart -->
   <section class="chart-section">
     <h2>Performance Over Time</h2>
     <canvas id="performanceChart"></canvas>
   </section>
 
-  <!-- URL Inspection -->
   <section class="url-inspection">
     <h2>URL Inspection</h2>
     <input type="text" id="urlInput" placeholder="Enter URL..." />
@@ -42,7 +37,6 @@
     <div id="urlResult"></div>
   </section>
 
-  <!-- Coverage -->
   <section class="coverage">
     <h2>Coverage Report</h2>
     <canvas id="coverageChart"></canvas>
@@ -51,7 +45,6 @@
     </ul>
   </section>
 
-  <!-- Mobile Usability -->
   <section class="enhancements">
     <h2>Mobile Usability</h2>
     <ul id="mobileUsabilityList">
@@ -59,7 +52,6 @@
     </ul>
   </section>
 
-  <!-- Sitemaps -->
   <section class="sitemaps">
     <h2>Sitemaps</h2>
     <table id="sitemapsTable">
@@ -72,6 +64,36 @@
     </table>
   </section>
 
-  <!-- Links Report -->
   <section class="links-report">
     <h2>Links Report</h2>
+    <h3>Top External Links</h3>
+    <table id="externalLinksTable">
+      <thead>
+        <tr><th>Site</th><th>Links</th></tr>
+      </thead>
+      <tbody id="externalLinksTableBody">
+        <tr><td colspan="2">Loading external links...</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Top Internal Links</h3>
+    <table id="internalLinksTable">
+      <thead>
+        <tr><th>Page</th><th>Links</th></tr>
+      </thead>
+      <tbody id="internalLinksTableBody">
+        <tr><td colspan="2">Loading internal links...</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="manual-actions">
+    <h2>Manual Actions & Security Issues</h2>
+    <p id="manualActions">Loading manual actions...</p>
+    <p id="securityIssues">Loading security issues...</p>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/search-script.js"></script>
+</body>
+</html>
