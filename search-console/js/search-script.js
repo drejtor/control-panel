@@ -1,4 +1,10 @@
-// Chart for Performance (Clicks and Impressions over 7 days)
+// search-script.js
+
+// Load data from config.js
+const accessToken = GSC_CONFIG.accessToken;
+const propertyUri = GSC_CONFIG.propertyUri;
+
+// Performance Chart (Dummy until real data available)
 const ctx = document.getElementById('performanceChart').getContext('2d');
 const performanceChart = new Chart(ctx, {
   type: 'line',
@@ -19,7 +25,7 @@ const performanceChart = new Chart(ctx, {
   }
 });
 
-// Chart for Coverage (Valid, Errors, Excluded)
+// Coverage Chart (Dummy for now)
 const ctxCoverage = document.getElementById('coverageChart').getContext('2d');
 const coverageChart = new Chart(ctxCoverage, {
   type: 'bar',
@@ -33,7 +39,7 @@ const coverageChart = new Chart(ctxCoverage, {
   }
 });
 
-// Dummy URL Inspection
+// Dummy URL Inspection (will be real later)
 function checkUrl() {
   const input = document.getElementById('urlInput').value;
   const resultDiv = document.getElementById('urlResult');
@@ -44,3 +50,31 @@ function checkUrl() {
   }
 }
 
+// Future Fetch Real Data (Placeholder for later)
+async function fetchRealPerformanceData() {
+  try {
+    const response = await fetch(`https://searchconsole.googleapis.com/v1/sites/${encodeURIComponent(propertyUri)}/searchAnalytics/query`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        startDate: "2024-01-01",
+        endDate: "2024-01-07",
+        dimensions: ["date"],
+        rowLimit: 7
+      })
+    });
+    const data = await response.json();
+
+    // Example to update chart
+    performanceChart.data.labels = data.rows.map(row => row.keys[0]);
+    performanceChart.data.datasets[0].data = data.rows.map(row => row.clicks);
+    performanceChart.data.datasets[1].data = data.rows.map(row => row.impressions);
+    performanceChart.update();
+    
+  } catch (error) {
+    console.error("Error fetching Search Console data:", error);
+  }
+}
