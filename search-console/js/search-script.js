@@ -9,21 +9,72 @@ function refreshDashboardData() {
     document.getElementById('lastUpdated').innerText = `Last Updated: ${new Date().toLocaleString()}`;
 
     if (GSC_CONFIG.demoMode) {
+      // DEMO: Show Dummy Overview Data
       document.getElementById('clicksValue').innerText = '5,400';
       document.getElementById('impressionsValue').innerText = '89,000';
       document.getElementById('ctrValue').innerText = '6.1%';
       document.getElementById('positionValue').innerText = '14.2';
 
+      // DEMO: Fill Dummy Coverage Report
+      document.getElementById('coverageList').innerHTML = `
+        <li>520 Valid pages</li>
+        <li>5 Errors (redirect error)</li>
+        <li>45 Excluded (blocked by robots.txt)</li>
+      `;
+
+      // DEMO: Fill Dummy Mobile Usability
+      document.getElementById('mobileUsabilityList').innerHTML = `
+        <li>2 Mobile usability errors found</li>
+        <li>Clickable elements too close together</li>
+      `;
+
+      // DEMO: Fill Dummy Sitemaps Table
+      document.getElementById('sitemapsTable').innerHTML = `
+        <thead>
+          <tr><th>Sitemap</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>https://yourdomain.com/sitemap.xml</td><td>Success</td></tr>
+        </tbody>
+      `;
+
+      // DEMO: Fill Dummy Links Report
+      document.getElementById('externalLinksTable').innerHTML = `
+        <thead>
+          <tr><th>Site</th><th>Links</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>example.com</td><td>56</td></tr>
+          <tr><td>anotherdomain.com</td><td>34</td></tr>
+        </tbody>
+      `;
+
+      document.getElementById('internalLinksTable').innerHTML = `
+        <thead>
+          <tr><th>Page</th><th>Links</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>/about-us</td><td>20</td></tr>
+          <tr><td>/contact</td><td>15</td></tr>
+        </tbody>
+      `;
+
+      // DEMO: Fill Dummy Manual Actions and Security
+      document.getElementById('manualActions').innerHTML = `<span style="color: green;">No Manual Actions detected.</span>`;
+      document.getElementById('securityIssues').innerHTML = `<span style="color: green;">No Security Issues found.</span>`;
+
       console.log("Showing dummy data (Demo Mode)");
-      document.getElementById('demoBadge').style.display = 'inline-block'; // Show DEMO badge
+      document.getElementById('demoBadge').style.display = 'inline-block';
+      
     } else {
       fetchRealDataFromGSC();
-      document.getElementById('demoBadge').style.display = 'none'; // Hide DEMO badge
+      document.getElementById('demoBadge').style.display = 'none';
     }
 
     document.getElementById('loadingSpinner').style.display = 'none';
   }, 1000);
 }
+
 
 // Dummy Performance Chart
 const ctx = document.getElementById('performanceChart').getContext('2d');
