@@ -1,15 +1,29 @@
-// Load credentials
 const accessToken = GSC_CONFIG.accessToken;
 const propertyUri = GSC_CONFIG.propertyUri;
 
-// Dummy setup (will fetch real later)
-document.getElementById('lastUpdated').innerText = `Last Updated: ${new Date().toLocaleString()}`;
+function refreshDashboardData() {
+  console.log("Refreshing dashboard data...");
+  document.getElementById('loadingSpinner').style.display = 'block';
 
-// Dummy values
-document.getElementById('clicksValue').innerText = '5,400';
-document.getElementById('impressionsValue').innerText = '89,000';
-document.getElementById('ctrValue').innerText = '6.1%';
-document.getElementById('positionValue').innerText = '14.2';
+  setTimeout(() => {
+    document.getElementById('lastUpdated').innerText = `Last Updated: ${new Date().toLocaleString()}`;
+
+    if (GSC_CONFIG.demoMode) {
+      document.getElementById('clicksValue').innerText = '5,400';
+      document.getElementById('impressionsValue').innerText = '89,000';
+      document.getElementById('ctrValue').innerText = '6.1%';
+      document.getElementById('positionValue').innerText = '14.2';
+
+      console.log("Showing dummy data (Demo Mode)");
+      document.getElementById('demoBadge').style.display = 'inline-block'; // Show DEMO badge
+    } else {
+      fetchRealDataFromGSC();
+      document.getElementById('demoBadge').style.display = 'none'; // Hide DEMO badge
+    }
+
+    document.getElementById('loadingSpinner').style.display = 'none';
+  }, 1000);
+}
 
 // Dummy Performance Chart
 const ctx = document.getElementById('performanceChart').getContext('2d');
@@ -45,7 +59,7 @@ function checkUrl() {
   }
 }
 
-// Future: Fetch real data from GSC APIs
+// Future: Real Data Fetching Function
 async function fetchRealDataFromGSC() {
   try {
     const response = await fetch(`https://searchconsole.googleapis.com/v1/sites/${encodeURIComponent(propertyUri)}/searchAnalytics/query`, {
@@ -62,18 +76,13 @@ async function fetchRealDataFromGSC() {
       })
     });
     const data = await response.json();
-    console.log(data); // Handle updating charts with real data
+    console.log(data); // Later: update charts with real data
   } catch (error) {
     console.error("Failed to fetch real GSC data:", error);
   }
-function refreshDashboardData() {
-  console.log("Refreshing dashboard data...");
-  document.getElementById('lastUpdated').innerText = `Last Updated: ${new Date().toLocaleString()}`;
-
-  // Re-run data fetch here when real API ready
-  fetchRealDataFromGSC();
 }
 
-
-  
-}
+// Load dashboard data when page loads
+window.onload = () => {
+  refreshDashboardData();
+};
