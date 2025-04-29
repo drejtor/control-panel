@@ -66,4 +66,14 @@ async function fetchRealDataFromGSC() {
   } catch (error) {
     console.error("Failed to fetch real GSC data:", error);
   }
+function refreshDashboardData() {
+  console.log("Refreshing dashboard data...");
+  document.getElementById('lastUpdated').innerText = `Last Updated: ${new Date().toLocaleString()}`;
+
+  // Re-run data fetch here when real API ready
+  fetchRealDataFromGSC();
+}
+
+
+  
 }
